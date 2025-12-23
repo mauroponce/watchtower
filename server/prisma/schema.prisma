@@ -1,0 +1,19 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Log {
+  id          Int      @id @default(autoincrement())
+  timestamp   DateTime @default(now())
+  ip          String
+  event       String   // Ej: "Port Scan", "Brute Force"
+  level       String   // "CRITICAL", "WARNING", "INFO"
+}
